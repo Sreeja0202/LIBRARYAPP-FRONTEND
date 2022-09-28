@@ -1,0 +1,118 @@
+<!-- navbar starts -->
+<nav class="navbar navbar-expand-lg" style="background-color: #200ca6">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand ms-5 text-warning" routerLink="#"
+      ><h3>
+        <b style="font-family: 'Times New Roman', Times, serif">LIBRARY APP</b>
+      </h3></a
+    >
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link text-light text-warning"
+            aria-current="page"
+            routerLink="/home"
+            style="font-family: 'Times New Roman', Times, serif"
+            ><h5><b>HOME</b></h5></a
+          >
+        </li>
+      </ul>
+      <form class="d-flex mb-3 me-5" (click)="onClickLogin()">
+        <button class="btn btn-outline-info text-light mb-1" type="click">
+          <b style="font-family: 'Times New Roman', Times, serif"> LOGIN</b>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar ends  -->
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold"><b>SIGN UP</b></h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+              <div class="form-group pt-3">
+                <label for="fname">Enter your Name</label>
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    class="form-control"
+                    formControlName="fname"
+                  />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <label for="femail">Enter your Email</label>
+                <div class="input-field">
+                  <span class="fa fa-envelope p-2"></span>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    class="form-control"
+                    formControlName="femail"
+                  />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <label for="fpassword">Enter your Password</label>
+                <div class="input-field">
+                  <!-- for seeing the password - got error - later check -->
+                  <!-- <span class="fa fa-lock p-2"></span>
+                  <input [type]="type" placeholder="Password" /> -->
+                  <!-- <span class="{{ eyeIcon }}" (click)="hideShowpass()"></span> -->
+                  <span class="fa fa-lock p-2"></span>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    class="form-control"
+                    formControlName="fpassword"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary w-100 btn btn-block mt-4"
+              >
+                SUBMIT
+              </button>
+              <div class="text-center pt-4 text-muted" id="forget">
+                Already have an Account?
+                <a id="forget" routerLink="/login">Login</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- form ends -->
+
+<!-- footer starts -->
+<div
+  style="background-color: #200ca6; margin-top: -80px"
+  class="text-center p-4"
+>
+  <small class="text-light">Copyright@2016</small>
+</div>
+<!-- footer ends -->

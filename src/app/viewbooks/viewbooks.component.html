@@ -1,0 +1,150 @@
+<!-- navbar starts -->
+<nav class="navbar navbar-expand-lg" style="background-color: #200ca6">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand ms-5 text-light" href="#"><b>LIBRARY APP</b></a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-light" aria-current="page" routerLink="#"
+            >BOOKS</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-light active" (click)="onAddBook()"
+            >ADD BOOKS</a
+          >
+        </li>
+      </ul>
+      <form class="d-flex mb-3 me-5">
+        <button
+          class="btn btn-outline-info text-light"
+          type="submit"
+          (click)="OnExit()"
+        >
+          <b> LOGOUT</b>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar ends -->
+
+<div class="container py-3">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let item of books">
+      <!-- where item just a variable to hold employee details and employees is the main array -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.bname }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.bauthor }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.bdate }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.bcategory }}</h6>
+          <hr />
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-primary mx-2"
+            (click)="onEditBook(item)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger mx-2"
+            (click)="onDeleteBook(item._id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade show" [class.show]="showModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ editMode ? "Update Book" : "Add Book" }}
+        </h5>
+        <button
+          (click)="onCloseModal()"
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="bookForm" (ngSubmit)="onbookSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="bname">Name</label>
+            <input type="text" class="form-control" formControlName="bname" />
+
+            <!-- <small *ngIf="!empForm.get('ename').valid && empForm.get('ename').touched" class="form-text text-danger">Please enter name</small> -->
+          </div>
+          <div class="form-group">
+            <label for="bauthor">Author</label>
+            <input type="text" class="form-control" formControlName="bauthor" />
+
+            <!-- <small class="text-danger form-text" [class.d-none] = "eposition.valid || email.touched">Please enter Position</small> -->
+            <!-- <small *ngIf="!empForm.get('eposition').valid && empForm.get('eposition').touched" class="form-text text-danger">Please Enter Position</small> -->
+          </div>
+          <div class="form-group">
+            <label for="bdate">Date of Publish</label>
+            <input type="date" class="form-control" formControlName="bdate" />
+
+            <!-- <small *ngIf="!empForm.get('elocation').valid && empForm.get('elocation')touched" class="form-text text-danger">Please enter Location</small> -->
+          </div>
+          <div class="form-group">
+            <label for="bcategory">Category</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="bcategory"
+            />
+
+            <!-- <small class="text-danger form-text" [class.d-none]="empForm.esalary.valid || empForm.esalary.touched">Please enter Salary</small> -->
+            <!-- <small *ngIf="!empForm.get['esalary'].valid && empForm.get['esalary'].touched" class="form-text text-danger">Please enter Salary</small> -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="onCloseModal()"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">
+            {{ editMode ? "Update Book" : "Add Book" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- footer starts -->
+<div
+  style="background-color: #200ca6; margin-top: 320px"
+  class="text-center p-4"
+>
+  <small class="text-light">Copyright@2016</small>
+</div>
+<!-- footer ends -->
