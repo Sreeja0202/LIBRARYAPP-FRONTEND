@@ -70,6 +70,7 @@ export class ViewbooksComponent implements OnInit {
       } else {
         this.bookservice.addBook(this.bookForm.value).subscribe(
           (res) => {
+            this.bookForm.reset();
             this.getBooks();
             this.onCloseModal();
             alert('Book Details successfully added!!!');
